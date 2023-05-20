@@ -1,0 +1,1 @@
+echo "HEEEY, now is $(date)" >> public/file.txt

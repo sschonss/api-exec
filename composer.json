@@ -1,0 +1,16 @@
+{
+    "name": "schons/api-exec",
+    "description": "API Exec Bash Scripts",
+    "autoload": {
+        "psr-4": {
+            "Schons\\ApiExec\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sschonss",
+            "email": "schonsluuiz@gmail.com"
+        }
+    ],
+    "require": {}
+}
