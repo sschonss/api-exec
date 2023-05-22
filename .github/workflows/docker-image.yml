@@ -12,13 +12,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+
     steps:
-    - uses: actions/checkout@v3
-    - name: Log in to Docker Hub
-      run: docker login -u "${{ secrets.DOCKER_USER }}" -p "${{ secrets.DOCKER_PASS }}"
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +%y_%m_%d_%H)
-    - name: Push the Docker image
-      run: docker login -u "${{ secrets.DOCKER_USER }}" -p "${{ secrets.DOCKER_PASS }}" && docker push sschonss/api-exec:$(date +%y_%m_%d_%H)
-
-
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +'%Y.%m.%d')
+      - name: Log in to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{secrets.DOCKER_USER}} --password ${{secrets.DOCKER_PASS}}
+      - name: Push image to Docker Hub
+        run: docker push sschonss/api-exec:$(date +'%Y.%m.%d')
