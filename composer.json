@@ -20,7 +20,7 @@
         "phpunit/phpunit": "^10"
     },
     "scripts": {
-        "test": "phpunit"
+        "testLoadEnv": "/bin/php vendor/phpunit/phpunit/phpunit test/TestLoadEnv.php"
     },
     "config": {
         "bin-dir": "bin"

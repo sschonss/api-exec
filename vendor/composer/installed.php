@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4c8c78911e3e7192f62ff27a17a46e810619c41d',
+        'reference' => '136aac27f15301c0b43bcb126ac199fc2f05dd86',
         'name' => 'schons/api-exec',
         'dev' => true,
     ),
@@ -139,7 +139,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4c8c78911e3e7192f62ff27a17a46e810619c41d',
+            'reference' => '136aac27f15301c0b43bcb126ac199fc2f05dd86',
             'dev_requirement' => false,
         ),
         'sebastian/cli-parser' => array(
