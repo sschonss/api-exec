@@ -1,1 +1,1 @@
-echo "HEEEY, now is $(date)" >> public/file.txt
+echo "HEEEY, now is $(date)" >> public/file.log
