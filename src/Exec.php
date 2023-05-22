@@ -23,14 +23,15 @@ class Exec
 
     public function run()
     {
-        //a cada hora, executar o script
-        $cron = new Cron\CronExpression($this->getExpression());
+        $cron = Cron\CronExpression::factory($this->getExpression());
+
         while (true) {
             if ($cron->isDue()) {
                 $this->execute();
             }
-            sleep(1);
+            sleep($cron->getNextRunDate()->getTimestamp() - time());
         }
+
     }
 
     public function execute() :void
@@ -38,6 +39,7 @@ class Exec
         try {
             exec($this->getPath(), $output, $return_var);
             $this->incrementCountExec();
+            echo $output[0] . PHP_EOL;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
