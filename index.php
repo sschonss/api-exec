@@ -15,10 +15,3 @@ $expression = $dotenv->get('EXPRESSION');
 $exec = new Exec($path, $expression);
 
 $exec->run();
-
-
-
-
-
-
-
