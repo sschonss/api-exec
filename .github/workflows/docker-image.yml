@@ -7,17 +7,15 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
 
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +'%Y.%m.%d')
-      - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USER }} p ${{ secrets.DOCKER_PASS }}
       - name: Push the Docker image
         run: docker push sschonss/api-exec:$(date +'%Y.%m.%d')
