@@ -1,0 +1,7 @@
+services:
+  api:
+    image: sschonss/api-exec
+    container_name: api-exec
+    command:
+      - php
+      - index.php
