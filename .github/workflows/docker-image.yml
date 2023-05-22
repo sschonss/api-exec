@@ -12,8 +12,7 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    #usin secret env variables
-
+    #using DOCKER USERNAME and DOCKER PASSWORD as secrets Environment Variables
     env:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
