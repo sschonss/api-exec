@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
-        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+        DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
