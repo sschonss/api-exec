@@ -1,0 +1,1 @@
+echo "File Test - date: $(date)" > public/test/test.log
