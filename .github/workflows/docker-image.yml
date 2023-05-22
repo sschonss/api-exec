@@ -12,10 +12,11 @@ jobs:
     env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
-
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +'%Y.%m.%d')
+      - name: Login to DockerHub
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASS
       - name: Push the Docker image
         run: docker push sschonss/api-exec:$(date +'%Y.%m.%d')
