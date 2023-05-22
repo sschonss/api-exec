@@ -2,45 +2,47 @@
 
 namespace Schons\ApiExec;
 
+require './vendor/autoload.php';
+
+use Cron;
 
 class Exec
 {
-
     protected $path_file;
 
-    protected $hour;
+    protected $count_exec = 0;
 
-    protected $hour_now;
+    protected $expression;
 
-    public function __construct($path_file = null, $hour = '00:00')
+    public function __construct($path_file = null, $expression = null)
     {
         $this->setPath($path_file);
-        $this->setHour($hour);
-        $this->setHourNow();
+
+        $this->setExpression($expression);
     }
-
-
 
     public function run()
     {
-        $this->setHourNow(date('H:i'));
-        if ($this->getHourNow() == $this->getHour()) {
-            //exec('bash ' . $this->getPath());
-            echo 'Hora de executar';
-        }else{
-            echo 'Ainda não é a hora';
+        //a cada hora, executar o script
+        $cron = new Cron\CronExpression($this->getExpression());
+        while (true) {
+            if ($cron->isDue()) {
+                $this->execute();
+            }
+            sleep(1);
         }
     }
 
-
-    public function setHourNow()
+    public function execute() :void
     {
-        $this->hour_now = date('H:i');
-    }
-
-    public function getHourNow()
-    {
-        return $this->hour_now;
+        try {
+            exec($this->getPath(), $output, $return_var);
+            $this->incrementCountExec();
+        } catch (\Exception $e) {
+            echo $e->getMessage();
+        }
+        $num = $this->getCountExec();
+        echo "Executado $num vezes". PHP_EOL;
     }
 
     public function setPath($path)
@@ -53,20 +55,29 @@ class Exec
         return $this->path_file;
     }
 
-    public function getHour()
+    public function getCountExec()
     {
-        return $this->hour;
+        return $this->count_exec;
     }
 
-    public function setHour($hour)
+    public function incrementCountExec()
     {
-        $this->hour = $hour;
+        $this->count_exec++;
     }
 
-    public function getHourToCron()
+    public function decrementCountExec()
     {
-        $hour = explode(':', $this->getHour());
-        return $hour[1] . ' ' . $hour[0] . ' * * *';
+        $this->count_exec--;
+    }
+
+    public function setExpression($expression)
+    {
+        $this->expression = $expression;
+    }
+
+    public function getExpression()
+    {
+        return $this->expression;
     }
 
 }
