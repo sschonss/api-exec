@@ -19,5 +19,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +%y_%m_%d_%H)
     - name: Push the Docker image
-      run: docker push sschonss/api-exec:$(date +%y_%m_%d_%H)
+      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }} && docker push sschonss/api-exec:$(date +%y_%m_%d_%H)
+
 
