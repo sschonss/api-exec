@@ -23,6 +23,7 @@ Dessa forma, desaclopamos a execução de scripts do servidor, e passamos a ter 
 - Acesse a pasta do projeto e execute o comando `composer install`.
 - Faça sua configuração no arquivo `config/.env`. (Não usamos dados sensíveis)
 - Execute o comando `php index.php` para iniciar a API.
+- Caso deseje, pode usar Docker e Docker Compose para subir a API, os arquivos necessários estão no projeto.
 
 ## Como funciona
 
