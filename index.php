@@ -3,12 +3,19 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Schons\ApiExec\Exec;
+use Schons\ApiExec\Utils\LoadEnv;
 
-$exec = new Exec('public/file.sh', '09:35');
+$dotenv = new LoadEnv(__DIR__ . '/config');
+$dotenv->load();
 
-$exec=>getHourNow();
+$path = $dotenv->get('PATH_FILE');
+
+$expression = $dotenv->get('EXPRESSION');
+
+$exec = new Exec($path, $expression);
 
 $exec->run();
+
 
 
 
