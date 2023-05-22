@@ -12,12 +12,17 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    #usin secret env variables
+
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag sschonss/api-exec:$(date +'%Y.%m.%d')
       - name: Log in to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p '${{ secrets.DOCKER_PASSWORD }}'
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Push the Docker image
         run: docker push sschonss/api-exec:$(date +'%Y.%m.%d')
