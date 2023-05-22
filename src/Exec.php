@@ -39,7 +39,6 @@ class Exec
         try {
             exec($this->getPath(), $output, $return_var);
             $this->incrementCountExec();
-            echo $output[0] . PHP_EOL;
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
