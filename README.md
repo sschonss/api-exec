@@ -36,3 +36,5 @@ Ainda é a primeira versão da API, então não possui muitas validações, mas 
 
 O código está disponível no GitHub, e pode ser utilizado livremente.
 Caso encontre algum problema, ou tenha alguma sugestão, fique a vontade para abrir uma issue no repositório, vou ficar muito feliz em ter uma contribuição e/ou feedback.
+
+#### Leia o [DOC.md](DOC.md)
