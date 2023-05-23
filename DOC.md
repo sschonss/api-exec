@@ -1,8 +1,8 @@
-API-EXEC
-API que executa comandos cron no servidor com PHP
+# API-EXEC
+## API que executa comandos cron no servidor com PHP
 
-Link para o repositório: https://lnkd.in/dc7_BhTT
-Link para o docker hub: https://lnkd.in/dgRpqbrQ
+### Link para o repositório: https://lnkd.in/dc7_BhTT
+### Link para o docker hub: https://lnkd.in/dgRpqbrQ
 
 Executar cron diretamente no servidor nem sempre é algo recomendado, pois podemos executar um comando errado, ou gerar um carga de processamento desnecessária (experiência própria), ou até mesmo executar um comando que não deveria ser executado naquele momento.
 
@@ -20,11 +20,15 @@ A API pode ser utilizada de duas formas:
 
 Com o PHP instalado no servidor, basta clonar o repositório, configurar o arquivo .env e executar o comando:
 
+```
 php index.php
+```
 
 Com o Docker você pode baixar a imagem do Docker Hub, configurar o arquivo .env e os volumes e executar o comando:
 
+```
 docker-compose up
+```
 
 A API possui apenas um função, que recebe o tempo de execução do comando e o comando a ser executado.
 
